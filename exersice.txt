@@ -1,0 +1,126 @@
+Questions,
+Q1. swap two numbers without temprory variable. 
+
+let a = 10;
+let b = 15;
+
+// Using arithmetic operations
+a = a + b;  // 25
+b = a - b;  // 25 - 15 = 10
+a = a - b;  // 25 - 10 = 15
+
+console.log("a =", a, "b =", b); // a=15, b=10
+
+Q2. find 3 large numbers among give array of numbers.
+let arr = [4, 5, 8, 6];
+
+// Bubble Sort (Descending Order)
+for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+        if (arr[j] < arr[j + 1]) {
+            // swap
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+        }
+    }
+}
+
+// Pick first 3
+let largest3 = arr.slice(0, 3);
+
+console.log("3 largest numbers:", largest3);
+
+Q3. break a whole number into digits like 4562 -> 4,5,6,2
+let num = 4562;
+let digits = [];
+
+while (num > 0) {
+    let digit = num % 10;   // last digit
+    digits.push(digit);     // push at end
+    num = Math.floor(num / 10);
+}
+
+digits.reverse(); // reverse at last
+console.log(digits); // [4, 5, 6, 2]
+
+Q4. scale a matrix
+let matrix = [
+  [1, 2],
+  [3, 4]
+];
+
+let scale = 2;
+let rows = matrix.length;
+let cols = matrix[0].length;
+
+let scaledMatrix = [];
+
+// Loop through rows
+for (let i = 0; i < rows; i++) {
+    scaledMatrix[i] = []; // create new row
+    // Loop through columns
+    for (let j = 0; j < cols; j++) {
+        scaledMatrix[i][j] = matrix[i][j] * scale;
+    }
+}
+
+console.log(scaledMatrix);
+
+Q5. multiply two matrix
+let A = [
+  [1, 2],
+  [3, 4]
+];
+
+let B = [
+  [2, 0],
+  [1, 2]
+];
+
+// Dimensions
+let rowsA = A.length;
+let colsA = A[0].length;
+let rowsB = B.length;
+let colsB = B[0].length;
+
+let C = [];
+
+for (let i = 0; i < rowsA; i++) {
+    C[i] = [];
+    for (let j = 0; j < colsB; j++) {
+        C[i][j] = 0;
+    }
+}
+
+for (let i = 0; i < rowsA; i++) {
+    for (let j = 0; j < colsB; j++) {
+        for (let k = 0; k < colsA; k++) {
+            C[i][j] = C[i][j] + (A[i][k] * B[k][j]);
+        }
+    }
+}
+
+console.log(C);
+
+Q6. create a function tp print elements form multi dimentional array
+function printMultiArray(arr) {
+    let rows = arr.length;
+
+    for (let i = 0; i < rows; i++) {
+        let cols = arr[i].length;
+        for (let j = 0; j < cols; j++) {
+            console.log(arr[i][j]);
+        }
+    }
+}
+
+// Example usage
+let multiArr = [
+    [1, 2, 3],
+    [4, 5],
+    [6, 7, 8, 9]
+];
+
+printMultiArray(multiArr);
+
